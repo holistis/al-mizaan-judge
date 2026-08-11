@@ -1,6 +1,6 @@
 {
   "name": "al-mizaan-judge",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Run your smart-contract bug bounty finding through a strict 7-gate validity judge before you spend a submission on Sherlock, Immunefi or Cantina.",
   "type": "module",
   "bin": {
