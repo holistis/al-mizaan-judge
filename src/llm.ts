@@ -14,7 +14,7 @@ export interface CompleteOpts {
   model?: string;
 }
 
-const DEFAULT_MODEL = "claude-sonnet-4-5";
+const DEFAULT_MODEL = "claude-sonnet-5";
 
 let client: Anthropic | null = null;
 
@@ -48,6 +48,10 @@ export async function complete(opts: CompleteOpts): Promise<string> {
     system: opts.system,
     messages: [{ role: "user", content: opts.prompt }],
   });
-  const block = resp.content[0];
-  return block?.type === "text" ? block.text : "";
+  // Responses can include non-text blocks first (e.g. extended-thinking blocks) —
+  // concatenate every text block rather than assuming content[0] is the text.
+  return resp.content
+    .filter((b): b is Anthropic.TextBlock => b.type === "text")
+    .map((b) => b.text)
+    .join("\n");
 }

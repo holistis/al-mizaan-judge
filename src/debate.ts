@@ -165,8 +165,12 @@ End with exactly one JSON object:
 {
   "verdict": "PASS" | "KILL"${isFinal ? "" : ' | "INCONCLUSIVE"'},
   "confidence": <0-100>,
-  "reasoning": "<one paragraph: who won the debate and why, citing which gate decided it>"
-}`;
+  "reasoning": "<max 100 words: who won the debate and why, citing which gate decided it>"
+}
+
+Keep any reasoning before the JSON brief — a few sentences of gate-by-gate reasoning is enough,
+you do not need to restate the full finding. The JSON object is the part that matters most;
+always leave enough of your response budget to finish it completely.`;
 }
 
 const EVIDENCE_DEFENDER_SYSTEM = `You are the Defender in the EVIDENCE phase.
@@ -193,8 +197,10 @@ End with exactly one JSON object:
 {
   "verdict": "PASS" | "KILL",
   "confidence": <0-100>,
-  "reasoning": "<one paragraph: which citations decided it>"
-}`;
+  "reasoning": "<max 100 words: which citations decided it>"
+}
+
+Keep it brief and always leave enough budget to finish the JSON object completely.`;
 
 // ── Evidence extraction + verification ─────────────────────────────────────
 
@@ -297,7 +303,7 @@ ${codeContext.slice(0, 4000)}${previousDebate ? `\n\nPREVIOUS DEBATE (round ${ro
       (await complete({
         system: judgeSystem(finding.platform, isLast),
         prompt: `${commonCtx}\n\nDEFENDER'S DEFENSE:\n${defense.slice(0, 500)}\n\nATTACKER'S ATTACK:\n${attack.slice(0, 500)}\n\nWho wins the debate? End with the JSON object.`,
-        maxTokens: 1000,
+        maxTokens: 2200,
       })) || "";
     judgeOutput = extractJudgeOutput(judgeText);
     llmCalls++;
@@ -316,7 +322,7 @@ ${codeContext.slice(0, 4000)}${previousDebate ? `\n\nPREVIOUS DEBATE (round ${ro
       defense: defense.slice(0, 800),
       attack: attack.slice(0, 800),
       judgeVerdict: verdict,
-      judgeReasoning: (judgeOutput?.reasoning ?? "").slice(0, 500),
+      judgeReasoning: (judgeOutput?.reasoning ?? "(no parseable verdict from the judge this round — treated as inconclusive)").slice(0, 500),
       confidence,
       evidence: [],
     },
@@ -383,7 +389,7 @@ Give only concrete code citations (file.sol:function — claim). Max 5.`;
       (await complete({
         system: EVIDENCE_JUDGE_SYSTEM,
         prompt: `CANDIDATE FINDING: ${finding.title}\n\n${evidenceBlock}\n\nWho wins based on the code? End with the JSON object.`,
-        maxTokens: 800,
+        maxTokens: 1800,
       })) || "";
     judgeOutput = extractJudgeOutput(judgeText);
     llmCalls++;
