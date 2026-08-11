@@ -4,7 +4,7 @@
   "description": "Run your smart-contract bug bounty finding through a strict 7-gate validity judge before you spend a submission on Sherlock, Immunefi or Cantina.",
   "type": "module",
   "bin": {
-    "al-mizaan-judge": "./dist/cli.js"
+    "al-mizaan-judge": "dist/cli.js"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -30,6 +30,14 @@
   ],
   "author": "",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/holistis/al-mizaan-judge.git"
+  },
+  "homepage": "https://github.com/holistis/al-mizaan-judge#readme",
+  "bugs": {
+    "url": "https://github.com/holistis/al-mizaan-judge/issues"
+  },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.32.0"
   },
