@@ -1,0 +1,45 @@
+{
+  "name": "al-mizaan-judge",
+  "version": "0.1.0",
+  "description": "Run your smart-contract bug bounty finding through a strict 7-gate validity judge before you spend a submission on Sherlock, Immunefi or Cantina.",
+  "type": "module",
+  "bin": {
+    "al-mizaan-judge": "./dist/cli.js"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "examples",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/cli.js",
+    "dev": "tsx src/cli.ts",
+    "test": "node --test dist/*.test.js"
+  },
+  "keywords": [
+    "smart-contract",
+    "security",
+    "audit",
+    "bug-bounty",
+    "sherlock",
+    "immunefi",
+    "cantina",
+    "wcag"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "tsx": "^4.19.0",
+    "@types/node": "^22.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
