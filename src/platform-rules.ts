@@ -1,9 +1,11 @@
 /**
  * Platform-specific hardcoded rules — judging conventions that differ per contest
- * platform. Sherlock is the first fully-populated set (calibrated against real
- * judging outcomes in the internal Al-Mizaan project). Immunefi/Cantina get a
- * lighter generic set until they're calibrated the same way — extend here as
- * more platforms get real judging data behind them.
+ * platform. Sherlock is the first fully-populated set: these are Sherlock's own
+ * published judging policies (SJIP-21, SJIP-26, dollar-impact thresholds), not a
+ * statistical fit to our own outcome data — that distinction matters, our internal
+ * outcome corpus has a known sampling bias we haven't corrected for yet. Immunefi/
+ * Cantina get a lighter generic set until we have their equivalent published rules
+ * — extend here as more platforms get real, sourced policy behind them.
  */
 
 import type { Platform } from "./types.js";

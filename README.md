@@ -33,8 +33,19 @@ Two layers, in order:
 
 This mirrors the internal methodology (Al-Mizaan v3) used to screen findings
 before submission in a real, ongoing smart-contract bug bounty operation —
-calibrated against real Sherlock judging outcomes, not a generic "is this a
-bug" prompt.
+developed and refined across dozens of real audits, not a generic "is this a
+bug" prompt. The Sherlock platform rules it encodes (SJIP-21, SJIP-26, the
+dollar-impact thresholds) are Sherlock's own published judging policy, not a
+statistical fit to our own data.
+
+**Honesty note on "calibrated":** the gate sequence and mechanical checks
+reflect real audit experience, but we have not yet statistically validated
+this tool's verdicts against a large, representative outcome dataset — the
+internal corpus we'd use for that is still being corrected for a known
+sampling bias (an earlier 10-contest subset skewed toward low-payout
+contests; the full, more representative set is 81 contests). Until that
+validation exists, treat every verdict as a strict second opinion grounded
+in real methodology, not a number with a proven statistical hit rate.
 
 ## Install
 

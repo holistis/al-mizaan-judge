@@ -17,9 +17,14 @@ scope, bereikbaarheid, aanvaller-type, welk protocolprincipe breekt, of het bedo
 dollarschade, en tot slot een drie-rollen-tegenspraak (een agent bewijst het, een andere probeert het
 kapot te maken, een derde velt onafhankelijk oordeel). De score is vermenigvuldigend, niet optellend,
 zodat één zwakke schakel de hele claim laat crashen in plaats van dat zwakke signalen zich opstapelen
-tot een vals-positieve indiening. Dit raamwerk is gecalibreerd tegen honderden echte Sherlock-
-uitspraken en heeft ons al talloze valse hypotheses laten elimineren voor we tijd/reputatie/inzet
-verspilden aan een indiening die toch zou worden afgewezen.
+tot een vals-positieve indiening. Dit raamwerk is ontwikkeld en aangescherpt door tientallen echte
+audits, en heeft ons al talloze valse hypotheses laten elimineren voor we tijd/reputatie/inzet
+verspilden aan een indiening die toch zou worden afgewezen. Eerlijkheidscorrectie (2026-08-11): "echte
+Sherlock-uitspraken" hierboven suggereerde statistische kalibratie tegen een groot, representatief
+corpus — dat bestaat nog niet. Het interne 3ilm-corpus waarop eerdere numerieke drempels leunden bleek
+een niet-representatieve steekproef (10 contests, laag-uitbetalend); het volledige, representatieve
+corpus (81 contests) wordt nog opgebouwd. De Sherlock-platformregels die dit product wél gebruikt
+(SJIP-21, SJIP-26, dollar-drempels) zijn Sherlock's eigen gepubliceerde beleid, geen eigen statistiek.
 
 Dat is precies het soort werk dat een extern team maanden kost om te bouwen én te valideren tegen de
 praktijk. Wij hebben het al, inclusief de validatie. Het ontbrekende stuk is puur verpakking: zodat
