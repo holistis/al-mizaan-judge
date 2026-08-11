@@ -47,6 +47,13 @@ contests; the full, more representative set is 81 contests). Until that
 validation exists, treat every verdict as a strict second opinion grounded
 in real methodology, not a number with a proven statistical hit rate.
 
+**Why this matters, with real numbers:** [What actually gets paid in smart
+contract audit contests](https://dev.to/holistis/what-actually-gets-paid-in-smart-contract-audit-contests-583o)
+digs into real contest outcome data — which bug classes actually get paid,
+how much duplicate and rejected submissions cost you, and why being
+selective about what you submit is worth more than submitting everything.
+This tool is the practical answer to that selectivity problem.
+
 ## Install
 
 ```bash
