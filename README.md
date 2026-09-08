@@ -5,7 +5,7 @@ finding and the relevant code, and get back a structured verdict on whether it
 would survive real contest judging, before you spend a submission on Sherlock,
 Immunefi, or Cantina.
 
-Submissions on these platforms cost real money, reputation, or both — a
+Submissions on these platforms cost real money, reputation, or both. A
 rejected or duplicate submission is pure loss. This tool exists to catch the
 findings that were never going to survive, before you spend that submission.
 
@@ -22,17 +22,17 @@ Two layers, in order:
 
 2. **Adversarial debate** (up to 3 rounds, calls the Anthropic API with your
    own key). A Defender agent argues the code is safe. An Attacker agent
-   tries to break that defense. A Judge decides — walking through the full
+   tries to break that defense. A Judge decides, walking through the full
    gate sequence: scope, reachability (including a specific check for state
    read/write timing traps), threat model, invariant breach, protocol intent,
    and dollar impact. Round 3, if reached, restricts the Judge to only
    code citations that were mechanically verified against the code you
-   provided — no rhetoric, only what's actually in the code. Doubt always
+   provided: no rhetoric, only what's actually in the code. Doubt always
    defaults to KILL: this tool is built to be conservative, an error here
    should cost you nothing, not a wasted submission.
 
 This mirrors the internal methodology (Al-Mizaan v3) used to screen findings
-before submission in a real, ongoing smart-contract bug bounty operation —
+before submission in a real, ongoing smart-contract bug bounty operation,
 developed and refined across dozens of real audits, not a generic "is this a
 bug" prompt. The Sherlock platform rules it encodes (SJIP-21, SJIP-26, the
 dollar-impact thresholds) are Sherlock's own published judging policy, not a
@@ -40,7 +40,7 @@ statistical fit to our own data.
 
 **Honesty note on "calibrated":** the gate sequence and mechanical checks
 reflect real audit experience, but we have not yet statistically validated
-this tool's verdicts against a large, representative outcome dataset — the
+this tool's verdicts against a large, representative outcome dataset. The
 internal corpus we'd use for that is still being corrected for a known
 sampling bias (an earlier 10-contest subset skewed toward low-payout
 contests; the full, more representative set is 81 contests). Until that
@@ -49,7 +49,7 @@ in real methodology, not a number with a proven statistical hit rate.
 
 **Why this matters, with real numbers:** [What actually gets paid in smart
 contract audit contests](https://dev.to/holistis/what-actually-gets-paid-in-smart-contract-audit-contests-583o)
-digs into real contest outcome data — which bug classes actually get paid,
+digs into real contest outcome data: which bug classes actually get paid,
 how much duplicate and rejected submissions cost you, and why being
 selective about what you submit is worth more than submitting everything.
 This tool is the practical answer to that selectivity problem.
@@ -123,7 +123,7 @@ contract Vault { ... }
 ​```
 
 ## Protocol context
-(optional) Relevant README/scope text — used for the scope gate and the
+(optional) Relevant README/scope text, used for the scope gate and the
 intent check.
 ```
 
@@ -131,7 +131,7 @@ intent check.
 `sherlock` is the most complete set right now (e.g. SJIP-21: generic
 Chainlink staleness alone is always invalid; SJIP-26: a trusted actor as sole
 attacker is invalid). `immunefi` and `cantina` currently use a lighter,
-not-yet-calibrated generic rule set — flagged as such in the output.
+not-yet-calibrated generic rule set, flagged as such in the output.
 `generic` runs the gate sequence with no platform-specific thresholds.
 
 ## What this deliberately does NOT do
@@ -139,20 +139,20 @@ not-yet-calibrated generic rule set — flagged as such in the output.
 - **No code execution.** No Foundry builds, no on-chain simulation. This is a
   reasoning judge, not a PoC runner. If the debate needs a fact only
   execution could prove, it says so rather than guessing.
-- **No hypothesis generation.** You bring your own finding — this tool
-  judges it, it doesn't scan a repo looking for bugs on its own.
+- **No hypothesis generation.** You bring your own finding. This tool
+  judges it; it doesn't scan a repo looking for bugs on its own.
 - **No hosting, no billing.** Runs locally with your own API key. Your code
   never leaves your machine except to the Anthropic API you're already
   paying for directly.
 
-These are staged, not abandoned — see the project roadmap if you want the
+These are staged, not abandoned. See the project roadmap if you want the
 full picture of where this is headed.
 
 ## Exit codes
 
-- `0` — verdict is `SUBMIT_CANDIDATE`
-- `2` — verdict is `NEEDS_MORE_EVIDENCE` or `LIKELY_REJECTED`
-- `1` — input error or configuration error (e.g. missing API key)
+- `0`: verdict is `SUBMIT_CANDIDATE`
+- `2`: verdict is `NEEDS_MORE_EVIDENCE` or `LIKELY_REJECTED`
+- `1`: input error or configuration error (e.g. missing API key)
 
 Useful for scripting: `al-mizaan-judge finding.md || echo "not ready yet"`.
 
@@ -170,10 +170,10 @@ console.log(report.finalVerdict); // "SUBMIT_CANDIDATE" | "NEEDS_MORE_EVIDENCE" 
 ## Honesty note
 
 This is a second opinion, not a guarantee. A `SUBMIT_CANDIDATE` verdict means
-the finding survived a strict, structured review — it does not guarantee a
+the finding survived a strict, structured review. It does not guarantee a
 human judge will agree. A `LIKELY_REJECTED` verdict is the tool telling you
 what it would take to change its mind (read the gate trail and the
-strongest counter-argument in the output) — sometimes that's exactly the
+strongest counter-argument in the output), and sometimes that's exactly the
 evidence you need to go find before you submit anyway.
 
 ## License
