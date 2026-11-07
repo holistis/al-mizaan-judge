@@ -59,9 +59,27 @@ function parseCodeSection(text: string): Array<{ path: string; content: string }
 
 export class InputParseError extends Error {}
 
+/**
+ * The finding's title: a "# Title: ..." line anywhere wins, otherwise the first "# heading" line.
+ * Checked one line at a time with patterns that cannot overlap: the earlier whole-text patterns (\s* next to .+ with the m flag)
+ * backtracked polynomially on a line of many spaces (CodeQL js/polynomial-redos), and \s* could also run across a line break.
+ */
+export function findTitle(raw: string): string | undefined {
+  const lines = raw.split("\n");
+  for (const line of lines) {
+    const m = /^#[ \t]*Title:[ \t]*(\S.*)$/i.exec(line.trimEnd());
+    if (m) return m[1].trim();
+  }
+  for (const line of lines) {
+    if (/^#[ \t]*Title:/i.test(line)) continue; // a Title key with no value is not a heading called "Title:"
+    const m = /^#[ \t]+(\S.*)$/.exec(line.trimEnd());
+    if (m) return m[1].trim();
+  }
+  return undefined;
+}
+
 export function parseFindingFile(raw: string): Finding {
-  const titleMatch = raw.match(/^#\s*Title:\s*(.+)$/im) ?? raw.match(/^#\s+(.+)$/m);
-  const title = titleMatch?.[1]?.trim();
+  const title = findTitle(raw);
   if (!title) {
     throw new InputParseError("No title found. Start the file with '# Title: <your finding title>'.");
   }
