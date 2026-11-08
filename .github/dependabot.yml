@@ -12,6 +12,10 @@ updates:
         update-types:
           - "minor"
           - "patch"
+    ignore:
+      # The types follow the lowest supported Node major (engines), not the newest release.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

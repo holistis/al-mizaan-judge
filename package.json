@@ -39,14 +39,14 @@
     "url": "https://github.com/holistis/al-mizaan-judge/issues"
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.32.0"
+    "@anthropic-ai/sdk": "^1.5.0"
   },
   "devDependencies": {
-    "typescript": "^5.6.0",
+    "@types/node": "^20.19.43",
     "tsx": "^4.19.0",
-    "@types/node": "^22.0.0"
+    "typescript": "^7.0.2"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   }
 }
